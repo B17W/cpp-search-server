@@ -43,9 +43,9 @@ public:
 
     void AddDocument(int document_id, const string& document) {
         vector<string> words = SplitIntoWordsNoStop(document);
-
+        double tf_one_word = 1.0 / words.size();
         for (const string& word : words) {
-            word_to_document_freqs_[word][document_id] += 1.0 / words.size();
+            word_to_document_freqs_[word][document_id] += tf_one_word;
         }
 
         document_count_++;
